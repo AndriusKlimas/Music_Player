@@ -13,9 +13,9 @@ def add_product_page():
 def add_product():
     """ Add product to catalog service """
     product = {
-        "make": request.form['make'],
-        "model": request.form['model'],
-        "price": request.form['price']
+        "name": request.form['name'],
+        "artist": request.form['artist'],
+        "album": request.form['album']
     }
     requests.post("http://catalog-svc:5000/add-product", json=product, timeout=5)
 
