@@ -35,12 +35,12 @@ def get_catalog():
 def add_product():
     """add new product to catalog"""
     product = {
-        "make": request.json['make'],
-        "model": request.json['model'],
-        "price": request.json['price']
+        "name": request.json['name'],
+        "artist": request.json['artist'],
+        "album": request.json['album']
     }
     #Create a nutral key for make and product
-    key = request.json['make'] + "-" + request.json['model']
+    key = request.json['name'] + "-" + request.json['artist']
 
     #Store key and value in redis. convert json to string first
     r.hset("catalog", key=key, value=json.dumps(product))
