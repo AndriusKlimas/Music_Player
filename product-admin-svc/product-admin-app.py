@@ -15,7 +15,9 @@ def add_product():
     product = {
         "name": request.form['name'],
         "artist": request.form['artist'],
-        "album": request.form['album']
+        "album": request.form['album'],
+        "audio_mp3": request.form['audio_mp3']
+
     }
     requests.post("http://catalog-svc:5000/add-product", json=product, timeout=5)
 

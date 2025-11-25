@@ -33,12 +33,19 @@ def get_catalog():
 #route to add new products to catalog
 @app.route('/add-product', methods=['POST'])
 def add_product():
+
+    f = request.files['audio_mp3']
+    f.save(f.filename)
     """add new product to catalog"""
     product = {
         "name": request.json['name'],
         "artist": request.json['artist'],
-        "album": request.json['album']
-    }
+        "album": request.json['album'],
+        "audio_mp3": f.filename}
+    
+
+
+
     #Create a nutral key for make and product
     key = request.json['name'] + "-" + request.json['artist']
 
