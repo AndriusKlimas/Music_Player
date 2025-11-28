@@ -11,12 +11,15 @@ def add_product_page():
 #route add-product
 @app.route('/add-product', methods=['POST'])
 def add_product():
+    if request.method == 'POST': 
+        f = request.files['audio_mp3']
+        f.save(f.filename)
     """ Add product to catalog service """
     product = {
         "name": request.form['name'],
         "artist": request.form['artist'],
         "album": request.form['album'],
-        "audio_mp3": request.form['audio_mp3']
+        "audio_mp3": f.filename
 
     }
     requests.post("http://catalog-svc:5000/add-product", json=product, timeout=5)

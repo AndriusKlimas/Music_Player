@@ -33,15 +33,13 @@ def get_catalog():
 #route to add new products to catalog
 @app.route('/add-product', methods=['POST'])
 def add_product():
-
-    f = request.files['audio_mp3']
-    f.save(f.filename)
     """add new product to catalog"""
     product = {
         "name": request.json['name'],
         "artist": request.json['artist'],
         "album": request.json['album'],
-        "audio_mp3": f.filename}
+        "audio_mp3": request.json['audio_mp3']
+    }
     
 
 
