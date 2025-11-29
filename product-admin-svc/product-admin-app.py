@@ -13,7 +13,7 @@ def add_product_page():
 def add_product():
     if request.method == 'POST': 
         f = request.files['audio_mp3']
-        f.save(f.filename)
+        f.save("/root/app/song-locations/" + f.filename)
     """ Add product to catalog service """
     product = {
         "name": request.form['name'],

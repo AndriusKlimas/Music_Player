@@ -22,6 +22,14 @@ services:
     volumes:
       - ./product-admin-svc:/root/app
 
+  song-player-nginx:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./product-admin-svc/song-locations/:/usr/share/nginx/html
+
+
   gateway:
     image: nginx:latest
     ports:
