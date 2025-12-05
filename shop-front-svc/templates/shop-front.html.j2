@@ -31,7 +31,6 @@
                 <th>Name</th>
                 <th>Artist</th>
                 <th>Album</th>
-                <th>MP3 File</th>
                 <th>Play</th>
             </tr>
         </thead>
@@ -41,7 +40,6 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.artist }}</td>
                 <td>{{ product.album }}</td>
-                <td>{{ product.audio_mp3 }}</td>
                 <td>
                     {% if product.audio_mp3 %}
                     <a href="/play-songs/{{ product.audio_mp3 }}" class="btn btn-primary btn-sm">Play</a>
