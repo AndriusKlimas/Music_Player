@@ -15,7 +15,9 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/get-catalog">View Songs</a>
+                    <a class="nav-link" href="/get-catalog">View All Songs</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/add-product-page">Add Song</a>
                 </li>
             </ul>
@@ -30,6 +32,7 @@
                 <th>Artist</th>
                 <th>Album</th>
                 <th>MP3 File</th>
+                <th>Play</th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +42,13 @@
                 <td>{{ product.artist }}</td>
                 <td>{{ product.album }}</td>
                 <td>{{ product.audio_mp3 }}</td>
+                <td>
+                    {% if product.audio_mp3 %}
+                    <a href="/play-songs/{{ product.audio_mp3 }}" class="btn btn-primary btn-sm">Play</a>
+                    {% else %}
+                    <span class="badge badge-secondary">No audio</span>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>
