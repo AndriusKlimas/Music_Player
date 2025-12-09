@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, make_response
 import redis
 import hashlib
 
@@ -35,9 +35,11 @@ def login():
     
     # Verify password
     if stored_password == hash_password(password):
-        # Login successful - store in session
-        session['username'] = username
-        return redirect('/get-catalog')
+        # Login successful - store in session and set cookie
+        #session['username'] = username
+        resp = make_response(redirect('/get-catalog'))
+        resp.set_cookie('userID', username, path='/', samesite='Lax')
+        return resp
     else:
         return render_template('login-page.html.j2', error='Invalid password.')
 
@@ -70,8 +72,10 @@ def signup():
 @app.route('/logout')
 def logout():
     """Handle user logout"""
-    session.pop('username', None)
-    return redirect('/login-page')
+    #session.pop('username', None)
+    resp = make_response(redirect('/login-page'))
+    resp.set_cookie('userID', '', path='/', expires=0, max_age=0)
+    return resp
 
 
 if __name__ == '__main__':
