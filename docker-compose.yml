@@ -29,6 +29,13 @@ services:
     volumes:
       - ./song-player-svc:/root/app
 
+  history:
+    build: ./history-svc
+    ports:
+      - "6548:5000"
+    volumes:
+      - ./history-svc:/root/app
+
   song-player-nginx:
     image: nginx:latest
     ports:

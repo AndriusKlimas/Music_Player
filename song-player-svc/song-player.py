@@ -5,8 +5,9 @@ The audio_mp3 filename from Redis is used in the URL to identify which song to p
 Only displays ONE song at a time - the song list is shown on shop-front page.
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -37,6 +38,20 @@ def play_song(audio_filename):
         if song.get('audio_mp3') == audio_filename:
             song_to_play = song
             break
+    
+    # Log the play to history if user is logged in
+    username = request.cookies.get('userID')
+    if username and song_to_play:
+        try:
+            requests.post("http://history:5000/log-play", 
+                         json={
+                             'username': username,
+                             'song_name': song_to_play.get('name', 'Unknown'),
+                             'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                         },
+                         timeout=2)
+        except:
+            pass  # Don't fail if history logging fails
     
     # Render the template with the single song (or None if not found)
     return render_template("song-player.html.j2", 
