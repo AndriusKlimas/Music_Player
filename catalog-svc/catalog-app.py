@@ -38,7 +38,8 @@ def add_product():
         "name": request.json['name'],
         "artist": request.json['artist'],
         "album": request.json['album'],
-        "audio_mp3": request.json['audio_mp3']
+        "audio_mp3": request.json['audio_mp3'],
+        "uploader": request.json.get('uploader', 'Unknown')
     }
     
 

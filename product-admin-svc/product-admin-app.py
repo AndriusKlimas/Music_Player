@@ -15,12 +15,15 @@ def add_product():
         f = request.files['audio_mp3']
         f.save("/root/app/song-locations/" + f.filename)
     """ Add product to catalog service """
+    # Get uploader from cookie
+    uploader = request.cookies.get('userID', 'Unknown')
+    
     product = {
         "name": request.form['name'],
         "artist": request.form['artist'],
         "album": request.form['album'],
-        "audio_mp3": f.filename
-
+        "audio_mp3": f.filename,
+        "uploader": uploader
     }
     requests.post("http://catalog-svc:5000/add-product", json=product, timeout=5)
 
