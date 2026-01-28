@@ -2,13 +2,13 @@ from flask import Flask, redirect, render_template, request
 import requests
 
 app = Flask(__name__)
-#route add product
+#route add product, when user loads the add-product-page
 @app.route('/add-product-page')
 def add_product_page():
     """ Return the add product page """
     return render_template("add-product.html.j2")
 
-#route add-product
+#route add-product, called from add-product-page.html.j2
 @app.route('/add-product', methods=['POST'])
 def add_product():
     if request.method == 'POST': 

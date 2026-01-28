@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Connect to Redis for history storage
 r = redis.Redis(host='catalog-db', port=6379, decode_responses=True)
 
-
+#when history page is loaded run below code
 @app.route('/history-page')
 def history_page():
     """Display the listening history for the logged-in user"""
@@ -35,7 +35,7 @@ def history_page():
     
     return render_template('history-page.html.j2', username=username, history=history)
 
-
+#gets it from song-player.py
 @app.route('/log-play', methods=['POST'])
 def log_play():
     """Log a song play to user's history"""

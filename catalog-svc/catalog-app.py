@@ -14,7 +14,7 @@ catalog = {"catalog": {
     "apple-watch-8": {"make": "Apple", "model": "Watch 8", "price": 399.99}}
     }
 
-#Route get catalog as JSON
+#Route get catalog as JSON, called from shop-front-svc
 @app.route('/get-catalog')
 def get_catalog():
     """ Return the catalog as a JASON """
@@ -30,7 +30,7 @@ def get_catalog():
     return data
 
 
-#route to add new products to catalog
+#route to add new products to catalog, called from product-admin-svc
 @app.route('/add-product', methods=['POST'])
 def add_product():
     """add new product to catalog"""

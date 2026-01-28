@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-#Route get-catalog, returns jinja template
+#Route get-catalog, found in nav bar on all pages
 @app.route('/get-catalog')
 def get_catalog():
     """ Return the catalog as a web page """
