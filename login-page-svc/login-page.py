@@ -8,18 +8,18 @@ app.secret_key = 'your-secret-key-here'  # Required for session management
 # Connect to Redis for user storage
 r = redis.Redis(host='login-db', port=6379, decode_responses=True)
 
-
+#privating the password
 def hash_password(password):
     """Hash a password using SHA256"""
     return hashlib.sha256(password.encode()).hexdigest()
 
-
+#when login page is loaded
 @app.route('/login-page')
 def login_page():
     """Display the login/signup page"""
     return render_template('login-page.html.j2')
 
-
+#when login function is ran, in html file
 @app.route('/login', methods=['POST'])
 def login():
     """Handle user login"""
@@ -43,7 +43,7 @@ def login():
     else:
         return render_template('login-page.html.j2', error='Invalid password.')
 
-
+#when signup function is ran, in html file
 @app.route('/signup', methods=['POST'])
 def signup():
     """Handle user registration"""
@@ -68,7 +68,7 @@ def signup():
     
     return render_template('login-page.html.j2', success='Account created successfully! You can now login.')
 
-
+#when user logs out, found on all pages
 @app.route('/logout')
 def logout():
     """Handle user logout"""
