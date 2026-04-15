@@ -8,26 +8,27 @@ import subprocess
 import sys
 
 def build_and_push_images(tag):
-    images = [
-        'catalog-svc_1',
-        'history-svc',
-        'login-page-svc',
-        'product-admin-svc',
-        'shop-front-svc',
-        'song-player-svc',
-        'gateway'
-    ]
+    # Map folder names to image names
+    images = {
+        'catalog-svc': 'catalog-svc_1',
+        'history-svc': 'history-svc',
+        'login-page-svc': 'login-page-svc',
+        'product-admin-svc': 'product-admin-svc',
+        'shop-front-svc': 'shop-front-svc',
+        'song-player-svc': 'song-player-svc',
+        'gateway': 'gateway'
+    }
     docker_registry = 'andriuskl'
 
-    for image in images:
-        image_name = f"{docker_registry}/{image}:{tag}"
+    for folder, image_repo in images.items():
+        image_name = f"{docker_registry}/{image_repo}:{tag}"
         print(f"Building {image_name}...")
         
         # Build the Docker image
-        build_command = f"docker build -t {image_name} ./{image}"
+        build_command = f"docker build -t {image_name} ./{folder}"
         result = subprocess.run(build_command, shell=True)
         if result.returncode != 0:
-            print(f"Warning: Build failed for {image}, skipping push...")
+            print(f"Warning: Build failed for {image_repo}, skipping push...")
             continue
         
         # Push the Docker image to Dockerhub
