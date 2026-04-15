@@ -36,7 +36,7 @@ def build_and_push_images(tag):
         push_command = f"docker push {image_name}"
         result = subprocess.run(push_command, shell=True)
         if result.returncode != 0:
-            print(f"Error: Push failed for {image}")
+            print(f"Error: Push failed for {image_repo}")
         else:
             print(f"Successfully pushed {image_name}")
 
