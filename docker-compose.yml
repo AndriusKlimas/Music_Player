@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  catalog-svc:
+  catalog-svc_1:
     build: ./catalog-svc
     ports:
       - "6543:5000"

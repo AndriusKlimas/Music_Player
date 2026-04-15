@@ -8,7 +8,15 @@ import subprocess
 import sys
 
 def build_and_push_images(tag):
-    images = ['catalog-svc', 'product-admin-svc', 'shop-front-svc']
+    images = [
+        'catalog-svc_1',
+        'history-svc',
+        'login-page-svc',
+        'product-admin-svc',
+        'shop-front-svc',
+        'song-player-svc',
+        'gateway'
+    ]
     docker_registry = 'andriuskl'
 
     for image in images:
@@ -17,11 +25,19 @@ def build_and_push_images(tag):
         
         # Build the Docker image
         build_command = f"docker build -t {image_name} ./{image}"
-        subprocess.run(build_command, shell=True, check=True)
+        result = subprocess.run(build_command, shell=True)
+        if result.returncode != 0:
+            print(f"Warning: Build failed for {image}, skipping push...")
+            continue
         
         # Push the Docker image to Dockerhub
+        print(f"Pushing {image_name}...")
         push_command = f"docker push {image_name}"
-        subprocess.run(push_command, shell=True, check=True)
+        result = subprocess.run(push_command, shell=True)
+        if result.returncode != 0:
+            print(f"Error: Push failed for {image}")
+        else:
+            print(f"Successfully pushed {image_name}")
 
 
 
