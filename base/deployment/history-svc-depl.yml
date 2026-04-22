@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: history-svc
-        image: andriuskl/history-svc:2.0.4
+        image: andriuskl/history-svc:2.0.5
         imagePullPolicy: Always
         resources:
           limits:

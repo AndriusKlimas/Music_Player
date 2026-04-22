@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: login-page-svc
-        image: andriuskl/login-page-svc:2.0.4
+        image: andriuskl/login-page-svc:2.0.5
         imagePullPolicy: Always
         resources:
           limits:

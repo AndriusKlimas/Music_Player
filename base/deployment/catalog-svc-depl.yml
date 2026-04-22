@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: catalog-svc
-        image: andriuskl/catalog-svc_1:2.0.4
+        image: andriuskl/catalog-svc_1:2.0.5
         imagePullPolicy: Always
         resources:
           limits:
