@@ -4,5 +4,8 @@ WORKDIR /root
 RUN pip install --upgrade pip
 COPY ./requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+WORKDIR /root/app
+COPY . .
+WORKDIR /root
 
-CMD [ "python", "/root/app/product-admin-app.py" ]
+CMD [ "python", "app/product-admin-app.py" ]
