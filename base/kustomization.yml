@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: music-app
+
+resources:
+  - catalog-db-depl.yml
+  - catalog-db-svc.yml
+  - login-db-depl.yml
+  - login-db-svc.yml
+  - catalog-svc-depl.yml
+  - catalog-svc-svc.yml
+  - shop-front-svc-depl.yml
+  - shop-front-svc-svc.yml
+  - product-admin-svc-depl.yml
+  - product-admin-svc-svc.yml
+  - song-player-svc-depl.yml
+  - song-player-svc-svc.yml
+  - history-svc-depl.yml
+  - history-svc-svc.yml
+  - login-page-svc-depl.yml
+  - login-page-svc-svc.yml
+  - song-player-nginx-depl.yml
+  - song-player-nginx-svc.yml
+  - gateway-depl.yml
+  - gateway-svc.yml

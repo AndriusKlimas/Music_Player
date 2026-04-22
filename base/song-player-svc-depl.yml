@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: song-player-svc-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: song-player-svc
+  template:
+    metadata:
+      labels:
+        app: song-player-svc
+    spec:
+      containers:
+      - name: song-player-svc
+        image: andriuskl/song-player-svc:2.0.4
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000

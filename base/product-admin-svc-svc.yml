@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-admin-svc
+spec:
+  selector:
+    app: product-admin-svc
+  ports:
+  - port: 5000
+    targetPort: 5000

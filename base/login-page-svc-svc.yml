@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-page-svc
+spec:
+  selector:
+    app: login-page-svc
+  ports:
+  - port: 5000
+    targetPort: 5000

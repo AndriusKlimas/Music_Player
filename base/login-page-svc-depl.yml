@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-page-svc-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: login-page-svc
+  template:
+    metadata:
+      labels:
+        app: login-page-svc
+    spec:
+      containers:
+      - name: login-page-svc
+        image: andriuskl/login-page-svc:2.0.4
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000

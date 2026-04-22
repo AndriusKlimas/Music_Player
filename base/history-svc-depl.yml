@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: history-svc-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: history-svc
+  template:
+    metadata:
+      labels:
+        app: history-svc
+    spec:
+      containers:
+      - name: history-svc
+        image: andriuskl/history-svc:2.0.4
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
