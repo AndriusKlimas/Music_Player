@@ -3,6 +3,8 @@ kind: Kustomization
 namespace: music-app
 
 resources:
+  - configmap.yml
+  - secret.yml
   - catalog-db-depl.yml
   - catalog-db-svc.yml
   - login-db-depl.yml
@@ -24,4 +26,3 @@ resources:
   - gateway-depl.yml
   - gateway-svc.yml
   - ingress.yml
-  - configmap.yml
