@@ -16,6 +16,18 @@ spec:
       - name: history-svc
         image: andriuskl/history-svc:2.0.5
         imagePullPolicy: Always
+        # Environment variables for Redis connection
+        env:
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: HISTORY_REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: HISTORY_REDIS_PORT
         resources:
           limits:
             memory: "128Mi"

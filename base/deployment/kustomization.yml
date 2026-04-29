@@ -24,3 +24,4 @@ resources:
   - gateway-depl.yml
   - gateway-svc.yml
   - ingress.yml
+  - configmap.yml

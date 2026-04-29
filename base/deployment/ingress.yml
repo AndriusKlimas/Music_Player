@@ -2,85 +2,80 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "8m"
 spec:
   rules:
   - host: localhost
     http:
       paths:
       - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: shop-front
-            port:
-              number: 5000
-      - pathType: Prefix
         path: /get-catalog
         backend:
           service:
-            name: shop-front
-            port:
-              number: 5000
-      - pathType: Prefix
-        path: /add-product-page
-        backend:
-          service:
-            name: product-admin
-            port:
-              number: 5000
-      - pathType: Prefix
-        path: /add-product
-        backend:
-          service:
-            name: product-admin
-            port:
-              number: 5000
-      - pathType: Prefix
-        path: /play-songs
-        backend:
-          service:
-            name: song-player
+            name: shop-front-svc
             port:
               number: 5000
       - pathType: Prefix
         path: /login-page
         backend:
           service:
-            name: login-page
+            name: login-page-svc
             port:
               number: 5000
       - pathType: Prefix
         path: /login
         backend:
           service:
-            name: login-page
+            name: login-page-svc
             port:
               number: 5000
       - pathType: Prefix
         path: /signup
         backend:
           service:
-            name: login-page
+            name: login-page-svc
             port:
               number: 5000
       - pathType: Prefix
         path: /logout
         backend:
           service:
-            name: login-page
+            name: login-page-svc
+            port:
+              number: 5000
+      - pathType: Prefix
+        path: /add-product
+        backend:
+          service:
+            name: product-admin-svc
+            port:
+              number: 5000
+      - pathType: Prefix
+        path: /add-product-page
+        backend:
+          service:
+            name: product-admin-svc
+            port:
+              number: 5000
+      - pathType: Prefix
+        path: /play-songs
+        backend:
+          service:
+            name: song-player-svc
             port:
               number: 5000
       - pathType: Prefix
         path: /history-page
         backend:
           service:
-            name: history
+            name: history-svc
             port:
               number: 5000
       - pathType: Prefix
         path: /log-play
         backend:
           service:
-            name: history
+            name: history-svc
             port:
               number: 5000

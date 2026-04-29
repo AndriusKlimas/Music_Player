@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: music-app
+data:
+  # Catalog Service Configuration
+  CATALOG_REDIS_HOST: "catalog-db"
+  CATALOG_REDIS_PORT: "6379"
+  
+  # Login Service Configuration
+  LOGIN_REDIS_HOST: "login-db"
+  LOGIN_REDIS_PORT: "6379"
+  
+  # History Service Configuration
+  HISTORY_REDIS_HOST: "catalog-db"
+  HISTORY_REDIS_PORT: "6379"
+  
+  # Song Player Service Configuration
+  AUDIO_BASE_URL: "http://song-player-nginx:80/"
+  CATALOG_SERVICE_URL: "http://catalog-svc:5000"
+  HISTORY_SERVICE_URL: "http://history-svc:5000"
+  
+  # General Service Configuration
+  SERVICE_PORT: "5000"
+  SHOP_FRONT_URL: "http://shop-front-svc:5000"
+  LOGIN_PAGE_URL: "http://login-page-svc:5000"
+  PRODUCT_ADMIN_URL: "http://product-admin-svc:5000"
