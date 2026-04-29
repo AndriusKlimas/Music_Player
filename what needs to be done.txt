@@ -1,0 +1,4 @@
+finish off secret in login-page-svc-depl.yml and add configmap and secret to kustomization.yml
+
+finish off configmap, env already added to history page, need to add to login page as well
+, also add configmap and secret to kustomization.yml
