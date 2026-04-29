@@ -23,3 +23,4 @@ resources:
   - song-player-nginx-svc.yml
   - gateway-depl.yml
   - gateway-svc.yml
+  - ingress.yml
