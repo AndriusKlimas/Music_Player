@@ -16,9 +16,9 @@ spec:
       - name: shop-front-svc
         image: andriuskl/shop-front-svc:2.0.5
         imagePullPolicy: Always
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
         ports:
         - containerPort: 5000

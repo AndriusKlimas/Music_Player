@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ./../deployment
+  - ./ingress-gateway.yml
+
+
+  
+images:
+- name: andriuskl/shop-front-svc
+  newName: andriuskl/shop-front-svc
+  newTag: 2.0.5
+- name: andriuskl/product-admin-svc
+  newName: andriuskl/product-admin-svc
+  newTag: 2.0.5
+- name: andriuskl/catalog-svc
+  newName: andriuskl/catalog-svc
+  newTag: 2.0.5
+# - name: andriuskl/gateway
+#   newName: andriuskl/gateway
+#   newTag: 2.0.5
+- name: andriuskl/history-svc
+  newName: andriuskl/history-svc
+  newTag: 2.0.5
+- name: andriuskl/login-page-svc
+  newName: andriuskl/login-page-svc
+  newTag: 2.0.5
+- name: andriuskl/song-player-svc
+  newName: andriuskl/song-player-svc
+  newTag: 2.0.5

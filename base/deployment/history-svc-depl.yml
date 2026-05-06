@@ -28,9 +28,9 @@ spec:
             configMapKeyRef:
               name: app-config
               key: HISTORY_REDIS_PORT
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "200m"
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "200m"
         ports:
         - containerPort: 5000
