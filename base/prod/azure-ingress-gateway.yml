@@ -4,10 +4,10 @@ metadata:
   name: music-app-ingress-v1
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "8m"
+    kubernetes.azure.com/app-routing-zone: ""
 spec:
   ingressClassName: webapprouting.kubernetes.azure.com
   rules:
-#  - host: localhost
   - http:
       paths:
       - pathType: Prefix
